@@ -6,7 +6,6 @@ import org.apache.commons.net.ntp.TimeStamp;
 
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Main {
@@ -22,12 +21,10 @@ public class Main {
     }
 
     public static TimeStamp getCurrentTime() {
-        long currentTime = 0;
         NTPUDPClient client = new NTPUDPClient();
         client.setDefaultTimeout(WAIT_FOR_SERVER_RESPONSE);
         try {
             client.open();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd yyyy HH:mm:ss.SSS zzz");
             for (String server : NTP_SERVERS) {
                 try {
                     InetAddress ioe = InetAddress.getByName(server);
